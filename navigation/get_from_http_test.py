@@ -1,7 +1,10 @@
 import unittest
-
+import sys
+import os
+ 
+sys.path.append(
+    os.path.abspath(os.path.join(os.path.dirname(__file__), os.path.pardir)))
 import base_test
-import unittest
 
 class GetFromHttpTest(base_test.WebDriverBaseTest):
 
