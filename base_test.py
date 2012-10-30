@@ -9,7 +9,7 @@ class WebDriverBaseTest(unittest.TestCase):
     def __init__(self, methodName):
         unittest.TestCase.__init__(self, methodName)
         self.driver = None
-        self.webdriver = None
+        self.webserver = None
     
     def setUp(self):
         config = ConfigParser.ConfigParser()
