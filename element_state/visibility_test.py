@@ -87,8 +87,10 @@ class VisibilityTest(base_test.WebDriverBaseTest):
         self.assertFalse(parent.is_displayed())
         self.assertFalse(child.is_displayed())
 
-    def test_visibility_hidden_on_parent_takes_presedence(self):
-        pass
+    def test_visibility_hidden_on_child_takes_presedence(self):
+        self.driver.get(self.webserver.where_is("element_state/visibility-child-presedence.html"))
+        child = self.driver.find_element_by_id("child")
+        self.assertTrue(child.is_displayed())
 
     def test_visibility_hidden_on_parent_takes_presedence_over_display_block(self):
         pass
