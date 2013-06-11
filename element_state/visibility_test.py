@@ -41,6 +41,27 @@ class NaturalNonVisibleElementsTest(base_test.WebDriverBaseTest):
         input = self.driver.find_element_by_tag_name("input")
         self.assertFalse(input.is_displayed())
 
+    def test_parent_node_visible_when_all_children_are_absolutely_positioned_and_overflow_is_hidden(self):
+        pass
+
+    def test_element_hidden_by_overflow_x_is_not_visible(self):
+        pass
+
+    def test_parent_node_visible_when_all_children_are_absolutely_position_and_overflow_is_hidden(self):
+        pass
+
+    def test_element_scrollable_by_overflow_x_is_visible(self):
+        pass
+
+    def test_element_scrollable_by_overflow_y_is_visible(self):
+        pass
+
+    def test_element_scrollable_by_overflow_x_and_y_is_visible(self):
+        pass
+
+    def test_element_scrollable_by_overflow_y_is_visible(self):
+        pass
+    
 class DisplayTest(base_test.WebDriverBaseTest):
     def test_display_block(self):
         self.driver.get(self.webserver.where_is("element_state/display-block.html"))
