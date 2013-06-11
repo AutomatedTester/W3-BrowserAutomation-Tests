@@ -124,15 +124,19 @@ class VisibilityTest(base_test.WebDriverBaseTest):
         pass
 
 class VisibilityInteractionTest(base_test.WebDriverBaseTest):
-    def test_hidden_element_is_unclickable(self):
+    def test_input_hidden_is_unclickable(self):
         self.driver.get(self.webserver.where_is("element_state/input-type-hidden-unclickable.html"))
         input = self.driver.find_element_by_tag_name("input")
 
-        try:
+        with self.assertRaises(ElementNotVisibleException):
             input.click()
-            self.fail("Expected ElementNotVisibleException")
-        except Exception as e:
-            self.assertTrue(isinstance(e, ElementNotVisibleException))
+
+    def test_hidden_input_checkbox_is_untogglable(self):
+        self.driver.get(self.webserver.where_is("element_state/hidden-input-type-checkbox-untogglable.html"))
+        checkbox = self.driver.find_element_by_tag_name("input")
+
+        with self.assertRaises(ElementNotVisibleException):
+            checkbox.toggle()
 
     def test_typing_in_hidden_input_is_impossible(self):
         pass
