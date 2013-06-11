@@ -38,7 +38,7 @@ class DisplayTest(base_test.WebDriverBaseTest):
         child = self.driver.find_element_by_id("child")
 
         self.assertFalse(parent.is_displayed())
-        self.asserrFalse(child.is_displayed())
+        self.assertFalse(child.is_displayed())
 
     def test_display_none_hides_child_node_link(self):
         pass
@@ -55,7 +55,7 @@ class DisplayTest(base_test.WebDriverBaseTest):
 class VisibilityTest(base_test.WebDriverBaseTest):
     def test_element_state_hidden(self):
         self.driver.get(self.webserver.where_is("element_state/visibility-hidden.html"))
-        el = self.driver_find_element_by_tag_name("p")
+        el = self.driver.find_element_by_tag_name("p")
         self.assertFalse(el.is_displayed())
 
     def test_element_state_visible(self):
@@ -65,7 +65,7 @@ class VisibilityTest(base_test.WebDriverBaseTest):
     
     def test_visibility_hidden_hides_child_node(self):
         self.driver.get(self.webserver.where_is("element_state/visibility-child.html"))
-        parent = self.driver_find_element_by_id("parent")
+        parent = self.driver.find_element_by_id("parent")
         child = self.driver.find_element_by_id("child")
 
         self.assertFalse(parent.is_displayed())
@@ -73,7 +73,7 @@ class VisibilityTest(base_test.WebDriverBaseTest):
 
     def test_visibility_hidden_hides_child_node_link(self):
         self.driver.get(self.webserver.where_is("element_state/visibility-child-link.html"))
-        parent = self.driver_find_element_by_id("parent")
+        parent = self.driver.find_element_by_id("parent")
         child = self.driver.find_element_by_id("child")
 
         self.assertFalse(parent.is_displayed())
@@ -81,7 +81,7 @@ class VisibilityTest(base_test.WebDriverBaseTest):
 
     def test_visibility_hidden_hides_child_node_paragraph(self):
         self.driver.get(self.webserver.where_is("element_state/visibility-child-paragraph.html"))
-        parent = self.driver_find_element_by_id("parent")
+        parent = self.driver.find_element_by_id("parent")
         child = self.driver.find_element_by_id("child")
 
         self.assertFalse(parent.is_displayed())
