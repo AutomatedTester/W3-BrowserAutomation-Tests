@@ -56,10 +56,14 @@ class DisplayTest(base_test.WebDriverBaseTest):
         self.assertFalse(child.is_displayed())
 
     def test_display_none_on_parent_takes_presedence(self):
-        pass
+        self.driver.get(self.webserver.where_is("element_state/display-none-parent-presedence.html"))
+        child = self.driver.find_element_by_id("child")
+        self.assertFalse(child.is_displayed())
 
     def test_display_none_on_parent_takes_presedence_over_visibility_visible(self):
-        pass
+        self.driver.get(self.webserver.where_is("element_state/display-none-parent-presedence-visibility.html"))
+        child = self.driver.find_element_by_id("child")
+        self.assertFalse(child.is_displayed())
 
     def test_display_none_hidden_dynamically(self):
         self.driver.get(self.webserver.where_is("element_state/display-none-dynamic.html"))
