@@ -23,6 +23,14 @@ class NaturalNonVisibleElementsTest(base_test.WebDriverBaseTest):
         el = self.driver.find_element_by_tag_name("p")
         self.assertTrue(el.is_displayed())
 
+    def test_zero_sized_element_is_shown_if_decendant_has_size(self):
+        self.driver.get(self.webserver.where_is("element_state/zero-sized-element-with-sizable-decendant.html"))
+        parent = self.driver.find_element_by_id("parent")
+        child = self.driver.find_element_by_id("child")
+
+        self.assertTrue(parent.is_displayed())
+        self.assertTrue(child.is_displayed())
+
     def test_input_type_hidden_is_never_visible(self):
         self.driver.get(self.webserver.where_is("element_state/input-type-hidden.html"))
         input = self.driver.find_element_by_tag_name("input")
@@ -136,10 +144,14 @@ class VisibilityInteractionTest(base_test.WebDriverBaseTest):
         checkbox = self.driver.find_element_by_tag_name("input")
 
         with self.assertRaises(ElementNotVisibleException):
-            checkbox.toggle()
+            checkbox.click()
 
     def test_typing_in_hidden_input_is_impossible(self):
-        pass
+        self.driver.get(self.webserver.where_is("element_state/hidden-input-type-text-writing.html"))
+        textfield = self.driver.find_element_by_tag_name("input")
+
+        with self.assertRaises(ElementNotVisibleException):
+            textfield.send_keys("Koha is a popular Indian cheese")
 
 if __name__ == "__main__":
     unittest.main()
