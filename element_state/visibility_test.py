@@ -21,6 +21,11 @@ class NaturalNonVisibleElementsTest(base_test.WebDriverBaseTest):
         el = self.driver.find_element_by_tag_name("p")
         self.assertTrue(el.is_displayed())
 
+    def test_input_type_hidden_is_never_visible(self):
+        self.driver.get(self.webserver.where_is("element_state/input-type-hidden.html"))
+        input = self.driver.find_element_by_tag_name("input")
+        self.assertFalse(input.is_displayed())
+
 class DisplayTest(base_test.WebDriverBaseTest):
     def test_display_block(self):
         self.driver.get(self.webserver.where_is("element_state/display-block.html"))
@@ -51,6 +56,11 @@ class DisplayTest(base_test.WebDriverBaseTest):
 
     def test_display_none_on_parent_takes_presedence_over_visibility_visible(self):
         pass
+
+    def test_display_none_hidden_dynamically(self):
+        self.driver.get(self.webserver.where_is("element_state/display-none-dynamic.html"))
+        hidden = self.driver.find_element_by_id("hidden")
+        self.assertFalse(hidden.is_displayed())
     
 class VisibilityTest(base_test.WebDriverBaseTest):
     def test_element_state_hidden(self):
