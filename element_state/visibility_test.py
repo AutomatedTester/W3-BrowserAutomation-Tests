@@ -62,7 +62,7 @@ class NaturalNonVisibleElementsTest(base_test.WebDriverBaseTest):
     def test_element_scrollable_by_overflow_y_is_visible(self):
         pass
 
-        def test_element_outside_viewport(self):
+    def test_element_outside_viewport(self):
         pass
 
     def test_element_dynamically_moved_outside_viewport(self):
