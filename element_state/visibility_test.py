@@ -152,6 +152,39 @@ class VisibilityTest(base_test.WebDriverBaseTest):
     def test_visibility_hidden_set_dynamically(self):
         pass
 
+    def test_element_outside_viewport(self):
+        pass
+
+    def test_element_dynamically_moved_outside_viewport(self):
+        pass
+
+    def test_element_hidden(self):
+        pass
+
+    def test_element_partially_hidden(self):
+        pass
+
+    def test_element_hidden_by_z_index(self):
+        self.driver.get(self.webserver.where_is("element_state/element-hidden-by-z-index.html"))
+        overlay = self.driver.find_element_by_id("overlay")
+        hidden = self.driver.find_element_by_id("hidden")
+
+        self.assertTrue(overlay.is_displayed())
+        self.assertFalse(hidden.is_displayed())
+
+    def test_element_moved_outside_viewport_by_transform(self):
+        self.driver.get(self.webserver.where_is("element_state/element-moved-outside-viewport-by-transform.html"))
+        el = self.driver.find_element_by_tag_name("div")
+        self.assertFalse(el.is_displayed())
+
+    def test_element_moved_behind_other_element_by_transform(self):
+        self.driver.get(self.webserver.where_is("element_state/element-moved-behind-other-element-by-transform.html"))
+        overlay = self.driver.find_element_by_id("overlay")
+        hidden = self.driver.find_element_by_id("hidden")
+
+        self.assertTrue(overlay.is_displayed())
+        self.assertFalse(hidden.is_displayed())
+
 class VisibilityInteractionTest(base_test.WebDriverBaseTest):
     def test_input_hidden_is_unclickable(self):
         self.driver.get(self.webserver.where_is("element_state/input-type-hidden-unclickable.html"))
