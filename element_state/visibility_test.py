@@ -1,8 +1,8 @@
 # -*- mode: python; fill-column: 100; comment-column: 100; -*-
 
-import unittest
-import sys
 import os
+import sys
+import unittest
 
 from selenium.common.exceptions import ElementNotVisibleException
 
@@ -47,8 +47,8 @@ class NaturalNonVisibleElementsTest(base_test.WebDriverBaseTest):
         pass
 
     def test_element_hidden_by_overflow_x_is_not_visible(self):
-        # TODO(andreastt): This test should probably be split in
-        # three.  Also it's making two assertions.
+        # TODO(andreastt): This test should probably be split in three.  Also it's making two
+        # assertions.
         pages = ["element_state/x-hidden-y-hidden.html",
                  "element_state/x-hidden-y-scroll.html",
                  "element_state/x-hidden-y-auto.html"]
