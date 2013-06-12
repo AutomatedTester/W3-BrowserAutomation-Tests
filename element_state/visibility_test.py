@@ -65,7 +65,7 @@ class NaturalNonVisibleElementsTest(base_test.WebDriverBaseTest):
         # TODO(andreastt): This test should probably be split in three.  Also it's making two
         # assertions.
         pages = ["element_state/x-hidden-y-hidden.html",
-                 "element_state/x-scoll-y-hidden.html",
+                 "element_state/x-scroll-y-hidden.html",
                  "element_state/x-auto-y-hidden.html"]
 
         for page in pages:
