@@ -61,6 +61,45 @@ class NaturalNonVisibleElementsTest(base_test.WebDriverBaseTest):
 
     def test_element_scrollable_by_overflow_y_is_visible(self):
         pass
+
+        def test_element_outside_viewport(self):
+        pass
+
+    def test_element_dynamically_moved_outside_viewport(self):
+        pass
+
+    def test_element_hidden(self):
+        pass
+
+    def test_element_partially_hidden(self):
+        pass
+
+    def test_element_hidden_by_z_index(self):
+        self.driver.get(self.webserver.where_is("element_state/element-hidden-by-z-index.html"))
+        overlay = self.driver.find_element_by_id("overlay")
+        hidden = self.driver.find_element_by_id("hidden")
+
+        self.assertTrue(overlay.is_displayed())
+        self.assertFalse(hidden.is_displayed())
+
+    def test_element_moved_outside_viewport_by_transform(self):
+        self.driver.get(self.webserver.where_is("element_state/element-moved-outside-viewport-by-transform.html"))
+        el = self.driver.find_element_by_tag_name("div")
+        self.assertFalse(el.is_displayed())
+
+    def test_element_moved_behind_other_element_by_transform(self):
+        self.driver.get(self.webserver.where_is("element_state/element-moved-behind-other-element-by-transform.html"))
+        overlay = self.driver.find_element_by_id("overlay")
+        hidden = self.driver.find_element_by_id("hidden")
+
+        self.assertTrue(overlay.is_displayed())
+        self.assertFalse(hidden.is_displayed())
+
+    def test_text_with_same_color_as_background(self):
+        self
+
+    def test_element_with_same_color_as_background(self):
+        self
     
 class DisplayTest(base_test.WebDriverBaseTest):
     def test_display_block(self):
@@ -152,39 +191,6 @@ class VisibilityTest(base_test.WebDriverBaseTest):
     def test_visibility_hidden_set_dynamically(self):
         pass
 
-    def test_element_outside_viewport(self):
-        pass
-
-    def test_element_dynamically_moved_outside_viewport(self):
-        pass
-
-    def test_element_hidden(self):
-        pass
-
-    def test_element_partially_hidden(self):
-        pass
-
-    def test_element_hidden_by_z_index(self):
-        self.driver.get(self.webserver.where_is("element_state/element-hidden-by-z-index.html"))
-        overlay = self.driver.find_element_by_id("overlay")
-        hidden = self.driver.find_element_by_id("hidden")
-
-        self.assertTrue(overlay.is_displayed())
-        self.assertFalse(hidden.is_displayed())
-
-    def test_element_moved_outside_viewport_by_transform(self):
-        self.driver.get(self.webserver.where_is("element_state/element-moved-outside-viewport-by-transform.html"))
-        el = self.driver.find_element_by_tag_name("div")
-        self.assertFalse(el.is_displayed())
-
-    def test_element_moved_behind_other_element_by_transform(self):
-        self.driver.get(self.webserver.where_is("element_state/element-moved-behind-other-element-by-transform.html"))
-        overlay = self.driver.find_element_by_id("overlay")
-        hidden = self.driver.find_element_by_id("hidden")
-
-        self.assertTrue(overlay.is_displayed())
-        self.assertFalse(hidden.is_displayed())
-
 class VisibilityInteractionTest(base_test.WebDriverBaseTest):
     def test_input_hidden_is_unclickable(self):
         self.driver.get(self.webserver.where_is("element_state/input-type-hidden-unclickable.html"))
@@ -206,6 +212,9 @@ class VisibilityInteractionTest(base_test.WebDriverBaseTest):
 
         with self.assertRaises(ElementNotVisibleException):
             textfield.send_keys("Koha is a popular Indian cheese")
+
+class OpacityTest(base_test.WebDriverBaseTest):
+    pass
 
 if __name__ == "__main__":
     unittest.main()
