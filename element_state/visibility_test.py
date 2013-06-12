@@ -96,10 +96,29 @@ class NaturalNonVisibleElementsTest(base_test.WebDriverBaseTest):
         self.assertFalse(hidden.is_displayed())
 
     def test_text_with_same_color_as_background(self):
-        self
+        self.driver.get(self.webserver.where_is("element_state/text-with-same-color-as-background.html"))
+        p = self.driver.find_element_by_tag_name("p")
+        self.assertFalse(p.is_displayed())
+
+    def test_text_with_same_color_as_parent_background(self):
+        self.driver.get(self.webserver.where_is("element_state/text-with-same-color-as-parent-background.html"))
+        p = self.driver.find_element_by_tag_name("p")
+        self.assertFalse(p.is_displayed())
+
+    def test_text_with_matching_color_and_background(self):
+        self.driver.get(self.webserver.where_is("element_state/text-with-matching-color-and-background.html"))
+        p = self.driver.find_element_by_tag_name("p")
+        self.assertTrue(p.is_displayed())
 
     def test_element_with_same_color_as_background(self):
-        self
+        self.driver.get(self.webserver.where_is("element_state/element-with-same-color-as-background.html"))
+        el = self.driver.find_element_by_tag_name("div")
+        self.assertFalse(el.is_displayed())
+
+    def test_element_with_same_color_as_parent_background(self):
+        self.driver.get(self.webserver.where_is("element_state/element-with-same-color-as-parent-background.html"))
+        hidden = self.driver.find_element_by_id("hidden")
+        self.assertFalse(hidden.is_displayed())
     
 class DisplayTest(base_test.WebDriverBaseTest):
     def test_display_block(self):
