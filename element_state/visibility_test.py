@@ -92,16 +92,27 @@ class NaturalNonVisibleElementsTest(base_test.WebDriverBaseTest):
         pass
 
     def test_element_outside_viewport(self):
-        pass
+        self.driver.get(self.webserver.where_is("element_state/element-outside-viewport.html"))
+        hidden = self.driver.find_element_by_tag_name("div")
+        self.assertFalse(hidden.is_displayed())
 
     def test_element_dynamically_moved_outside_viewport(self):
-        pass
+        self.driver.get(self.webserver.where_is("element_state/element-dynamically-moved-outside-viewport.html"))
+        hidden = self.driver.find_element_by_tag_name("div")
+        self.assertFalse(hidden.is_displayed())
 
-    def test_element_hidden(self):
-        pass
+    def test_element_hidden_by_other_element(self):
+        self.driver.get(self.webserver.where_is("element_state/element-hidden-by-other-element.html"))
+        overlay = self.driver.find_element_by_id("overlay")
+        hidden = self.driver.find_element_by_id("hidden")
 
-    def test_element_partially_hidden(self):
-        pass
+        self.assertTrue(overlay.is_displayed())
+        self.assertFalse(hidden.is_displayed())
+                        
+    def test_element_partially_hidden_by_other_element(self):
+        self.driver.get(self.webserver.where_is("element_state/element-partially-hidden-by-other-element.html"))
+        partial = self.driver.find_element_by_id("partial")
+        self.assertTrue(partial.is_displayed())
 
     def test_element_hidden_by_z_index(self):
         self.driver.get(self.webserver.where_is("element_state/element-hidden-by-z-index.html"))
