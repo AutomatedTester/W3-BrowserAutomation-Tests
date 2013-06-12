@@ -61,6 +61,21 @@ class NaturalNonVisibleElementsTest(base_test.WebDriverBaseTest):
             self.assertFalse(right.is_displayed())
             self.assertFalse(bottom_right.is_displayed())
 
+    def test_element_hidden_by_overflow_y_is_not_visible(self):
+        # TODO(andreastt): This test should probably be split in three.  Also it's making two
+        # assertions.
+        pages = ["element_state/x-hidden-y-hidden.html",
+                 "element_state/x-scoll-y-hidden.html",
+                 "element_state/x-auto-y-hidden.html"]
+
+        for page in pages:
+            self.driver.get(self.webserver.where_is(page))
+            bottom = self.driver.find_element_by_id("bottom")
+            bottom_right = self.driver.find_element_by_id("bottom-right")
+
+            self.assertFalse(bottom.is_displayed())
+            self.assertFalse(bottom_right.is_displayed())
+    
     def test_parent_node_visible_when_all_children_are_absolutely_position_and_overflow_is_hidden(self):
         pass
 
