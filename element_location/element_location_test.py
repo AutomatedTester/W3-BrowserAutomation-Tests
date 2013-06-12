@@ -1,11 +1,15 @@
 # -*- mode: python; fill-column: 100; comment-column: 100; -*-
 
+import os
+import sys
 import unittest
+
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), os.path.pardir)))
 import base_test
 
 class ElementLocationTest(base_test.WebDriverBaseTest):
-
     def setUp(self):
+        super(self).setUp()
         self.driver.get(self.webserver.where_is("element_location/elements.html"))
 
     def test_find_element_by_id(self):
