@@ -1,3 +1,5 @@
+# -*- mode: python; fill-column: 100; comment-column: 100; -*-
+
 import unittest
 import ConfigParser
 
